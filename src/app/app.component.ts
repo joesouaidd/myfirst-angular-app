@@ -1,6 +1,7 @@
 // The root component that bootstraps the app.
 
-import { Component } from '@angular/core';  //decorator that is used to define the metadata of the class is part of the core module of angular
+import { Component } from '@angular/core'; //decorator that is used to define the metadata of the class is part of the core module of angular
+import { HeaderComponent } from "./header.component";  
 
 
 //Decorator which a typescript feature that is used to define the metadata of the class.
@@ -11,6 +12,7 @@ import { Component } from '@angular/core';  //decorator that is used to define t
   standalone: true,
   templateUrl: './app.component.html', //this is the markup of the component that will replace the html element with the selector app-root
   styleUrl: './app.component.css',
+  imports: [HeaderComponent], //import the standalone components that are used in the component
 })
 export class AppComponent {
 
