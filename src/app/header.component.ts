@@ -8,6 +8,8 @@ import {Component } from '@angular/core';
     //standalone components are easier to use and tie together
     standalone : true,
     templateUrl : './header.component.html',
+    styleUrl : './header.component.css',
+    //if there are multiple css files we use styleUrls
     // styleUrls : ['./header.component.css'],
 })
 export class HeaderComponent {
