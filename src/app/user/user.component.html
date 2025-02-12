@@ -2,13 +2,23 @@
     <button (click)="onSelectUser()">
         <!-- src and alt are a property of the html element img -->
          <!-- so it is called property binding -->
-        <img [src] ="imagePath" [alt]="selectedUser.name"/>
+
+        <!-- without signal  -->
+        <!-- <img [src] ="imagePath" [alt]="selectedUser.name"/> -->
+
+        <!-- with signal -->
+        <img [src] ="imagePath()" [alt]="selectedUser().name"/>
 
         <!-- <span> doesn't apply any visual formatting or semantic meaning. It simply groups content.
         Inline Nature: Unlike block-level elements (e.g., <div>), <span> does not start on a new line, so it flows with the surrounding text.
          It is often used with CSS to style a specific part of the content, you might use <span> to change the color, font, or behavior of a section of text. -->
-        <span>{{ selectedUser.name}}  </span>
         
+        <!-- without signal -->
+        <!-- <span>{{ selectedUser.name}}  </span> -->
+
+        <!-- with signal -->
+        <span>{{ selectedUser().name }}  </span>
+
 
     </button>
 </div>
