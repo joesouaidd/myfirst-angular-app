@@ -37,4 +37,7 @@
 
   </ul>
 
+  <!-- if selecteUser is null or undefiened, the expressions returns null instead of error when using '?' -->
+   <!-- There's no need to write selectedUser()?.name because getters are accessed without calling them explicitly. -->
+  <app-task [taskowner]="selectedUser?.name"></app-task>
 </main>

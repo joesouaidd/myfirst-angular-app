@@ -20,8 +20,9 @@ export class UserComponent {
 
   //output decorator
   //will allow us to emit custom values through the select property to any parent component
-  // @Output () select =  new EventEmitter();
-  select = output<String>();
+  @Output () select =  new EventEmitter<string>();
+
+ // select = output<String>();
    
 
 
@@ -33,6 +34,7 @@ export class UserComponent {
   onSelectUser(){
     //the emit is from select property that is an event emitter
      this.select.emit(this.id);
+     
   }
 
 }
