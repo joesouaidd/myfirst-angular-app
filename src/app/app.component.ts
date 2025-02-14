@@ -19,5 +19,8 @@ export class AppComponent {
   
   //properties of the class
   users = DUMMY_USERS; //this is the array of users that will be used in the component
+  onSelectUserApp(id : string) { 
+    console.log('User with id: ' + id + ' was selected');
+  }
 
 }
