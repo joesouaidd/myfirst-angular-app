@@ -1,4 +1,4 @@
-import { Component, computed, Input, input, Output, EventEmitter } from '@angular/core';
+import { Component, computed, Input, input, Output, output,  EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -18,9 +18,13 @@ export class UserComponent {
   @Input({required: true}) name!: string; //this is the name of the use
   @Input({required: true}) id!: string; //this is the age of the user
 
+  //output decorator
   //will allow us to emit custom values through the select property to any parent component
-  @Output () select =  new EventEmitter();
+  // @Output () select =  new EventEmitter();
+  select = output<String>();
    
+
+
   get imagePath(){
     return 'assets/users/' + this.avatar;
   }
