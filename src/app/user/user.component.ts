@@ -1,11 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
-
-import { DUMMY_USERS } from '../dummy-users';
-
-// random number between 0 and the highest index of the array
-//global variable
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -20,38 +13,22 @@ export class UserComponent {
 
   //by default it is public so there is no need to add public
 
-  //without signal
-  // public selectedUser = DUMMY_USERS[randomIndex];
-
-  //with signal
-  public selectedUser = signal(DUMMY_USERS[randomIndex]);
-
-  // a javascript and typescrit feature getter method that is used to get the value of the property
-  // this function is like a class property, in which we don't have to call it
-  // meant to produce and return a new value
-
-  //without signal
-  // get imagePath() {
-    
-  //   return 'assets/users/' + this.selectedUser.avatar; 
-
-  // }
+  //properties of the class
+  //input decorator is used to make the property available to the parent component
+  //this will mark the property as settable from outside
+  //the ! is used to tell typescript that the property will be initialized later
+  @Input() avatar!: string; //this is the avatar of the user
+  @Input() name!: string; //this is the name of the user
 
 
-  //with signal
-  imagePath =computed  (()=> 'assets/users/' + this.selectedUser().avatar);
+  get imagePath(){
 
-
+    return 'assets/users/' + this.avatar;
+  }
 
   //method that will be called by the event listener binded to the button
   onSelectUser(){
-    //local variable
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    //without signal
-    // this.selectedUser = DUMMY_USERS[randomIndex];
-    
-    //with signal
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
+
   }
 
 }

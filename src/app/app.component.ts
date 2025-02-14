@@ -3,7 +3,7 @@
 import { Component } from '@angular/core'; //decorator that is used to define the metadata of the class is part of the core module of angular
 import { HeaderComponent } from "./header/header.component";
 import { UserComponent } from "./user/user.component";  
-
+import { DUMMY_USERS } from './dummy-users';
 
 //Decorator which a typescript feature that is used to define the metadata of the class.
 //It is the decorator that transfor this standard typescript class into an angular component.
@@ -17,5 +17,7 @@ import { UserComponent } from "./user/user.component";
 })
 export class AppComponent {
   
+  //properties of the class
+  users = DUMMY_USERS; //this is the array of users that will be used in the component
 
 }
