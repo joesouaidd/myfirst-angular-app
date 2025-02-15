@@ -17,11 +17,13 @@ export class UserComponent {
   //the ! is used to tell typescript that the property will be initialized later
   @Input({required: true}) user ?: User;
 
+  @Input({required : true}) selected !: boolean;
+
+  
   //output decorator
   //will allow us to emit custom values through the select property to any parent component
   @Output () select =  new EventEmitter<string>();
 
- // select = output<String>();
    
 
 
