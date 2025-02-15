@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TaskComponent {
 
-  @Input({required :true}) taskowner !: string;
+  @Input() taskowner ?: string;
 
 
 }

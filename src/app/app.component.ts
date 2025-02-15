@@ -20,7 +20,7 @@ export class AppComponent {
   
   //properties of the class
   users = DUMMY_USERS; //this is the array of users that will be used in the component
-  selectedUserId !: string; //this is the task owner name that will be used in the component
+  selectedUserId = 'u1'; //this is the task owner name that will be used in the component
 
   // ! is to convince typescript that we will always have a selected user
   
@@ -31,7 +31,10 @@ export class AppComponent {
   //when you define selectedUser as a getter, the code inside the getter runs every time Angular needs to access it
   get selectedUser() {
     //! means expression is never null or undefined
-  return this.users.find((user) => user.id === this.selectedUserId)!;
+    //The find method iterates over the array and calls the provided predicate function (in this case, (user) => user.id === this.selectedUserId) for each element.
+    //This function returns a boolean indicating whether the current element matches the condition. 
+    // The find method then returns the first element (i.e., a user) for which the predicate returns true
+  return this.users.find((user) => user.id === this.selectedUserId);
   }
 
   onSelectUserApp(id : string) { 

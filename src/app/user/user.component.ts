@@ -14,9 +14,11 @@ export class UserComponent {
   //input decorator is used to make the property available to the parent component
   //this will mark the property as settable from outside
   //the ! is used to tell typescript that the property will be initialized later
-  @Input({required: true}) avatar!: string; //this is the avatar of the user
-  @Input({required: true}) name!: string; //this is the name of the use
-  @Input({required: true}) id!: string; //this is the age of the user
+  @Input({required: true}) user ?: {
+    id: string, 
+    name: string, 
+    avatar: string
+  };
 
   //output decorator
   //will allow us to emit custom values through the select property to any parent component
@@ -27,13 +29,13 @@ export class UserComponent {
 
 
   get imagePath(){
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   //method that will be called by the event listener binded to the button
   onSelectUser(){
     //the emit is from select property that is an event emitter
-     this.select.emit(this.id);
+     this.select.emit(this.user.id);
      
   }
 
