@@ -23,7 +23,7 @@
   @if( selectedUser){
   <!-- if selecteUser is null or undefiened, the expressions returns null instead of error when using '?' -->
    <!-- There's no need to write selectedUser()?.name because getters are accessed without calling them explicitly. -->
-  <app-task [taskowner]="selectedUser.name"></app-task>
+  <app-tasks [userId] = "selectedUser.id" [taskowner]="selectedUser.name"></app-tasks>
 
   } @else {
     <p id = fallback> Select a User to see their tasks!</p>
