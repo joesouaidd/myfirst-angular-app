@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NewTaskData } from '../task/task.model';
+import { TaskService } from '../tasks.service';
 @Component({
   selector: 'app-new-task',
   imports: [FormsModule],
@@ -9,27 +10,28 @@ import { NewTaskData } from '../task/task.model';
 })
 export class NewTaskComponent {
 
-  @Output () cancel = new EventEmitter<boolean>();
+  @Input ({required: true}) userId : string;
+  @Output () close = new EventEmitter<void>();
 
   //no need to use output/input decorator because we are not passing any data to the parent component
   enteredTitle = '';
   enteredSummary = '';
   enteredDueDate = '';
-
-  @Output () submit = new EventEmitter<NewTaskData>();
-  
+  private TaskService = inject(TaskService);
 
   onCancelAddTask(){
-    this.cancel.emit(false);
+    this.close.emit();
   }
 
+  
   onSubmit(){
-    const aNewTask: NewTaskData = {
+   this.TaskService.addTask({
       title: this.enteredTitle,
       summary: this.enteredSummary,
       dueDate: this.enteredDueDate
-    };
-    this.submit.emit(aNewTask);
+    }, 
+    this.userId
+  );
+    this.close.emit();
   }
-
 }
